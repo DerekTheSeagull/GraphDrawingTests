@@ -1,16 +1,9 @@
-//
-// Created by Josh aka Bae on 09/02/2016.
-//
-
-#ifndef GRAPHDRAWINGTESTS_CONVERTEQUATION_H
-#define GRAPHDRAWINGTESTS_CONVERTEQUATION_H
-
 #include <iostream>
+#include <c++/array>
 
 using namespace std;
 
-string ConvertEquation(string sEquation)
-{
+int main() {
     pair <const char*, pair<string, string>> aConditionalConversions[6][1];
 
     aConditionalConversions[0][0] = make_pair("x", make_pair("0123456789(", "*x"));
@@ -20,12 +13,5 @@ string ConvertEquation(string sEquation)
     aConditionalConversions[4][0] = make_pair("t", make_pair("0123456789(", "*t"));
     aConditionalConversions[5][0] = make_pair("(", make_pair("0123456789(", "*("));
 
-
+    return 0;
 }
-
-bool InArray()
-{
-
-}
-
-#endif //GRAPHDRAWINGTESTS_CONVERTEQUATION_H
