@@ -1,0 +1,13 @@
+//
+// Created by Josh aka Bae on 09/02/2016.
+//
+
+#ifndef GRAPHDRAWINGTESTS_CONVERTEQUATION_H
+#define GRAPHDRAWINGTESTS_CONVERTEQUATION_H
+
+#include <iostream>
+
+
+
+
+#endif //GRAPHDRAWINGTESTS_CONVERTEQUATION_H
