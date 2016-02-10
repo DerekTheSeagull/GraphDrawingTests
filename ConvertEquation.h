@@ -18,6 +18,8 @@ string ConvertEquation(string sEquation)
 {
     pair <const char*, pair<string, string>> aConditionalConversions[iArrayHeight][1];
 
+    const char* csEquation = sEquation.c_str();
+
     aConditionalConversions[0][0] = make_pair("x", make_pair("0123456789(", "*x"));
     aConditionalConversions[1][0] = make_pair("y", make_pair("0123456789(", "*y"));
     aConditionalConversions[2][0] = make_pair("s", make_pair("0123456789(", "*s"));
@@ -25,8 +27,19 @@ string ConvertEquation(string sEquation)
     aConditionalConversions[4][0] = make_pair("t", make_pair("0123456789(", "*t"));
     aConditionalConversions[5][0] = make_pair("(", make_pair("0123456789(", "*("));
 
-    cout << InArray(aConditionalConversions, "x");
+    for (int i = 0; i < sEquation.length(); ++i)
+    {
+        const char* ccCurrentChar = &csEquation[i];
 
+        cout << ccCurrentChar;
+        if (i > 0 && InArray(aConditionalConversions, ccCurrentChar))
+        {
+            cout << "We did it reddit!";
+        }
+    }
+
+
+    return "0";
 }
 
 bool InArray(pair <const char*, pair<string, string>> aArray[iArrayHeight][1], const char* cTarget)

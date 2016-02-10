@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    ConvertEquation("josh");
+    ConvertEquation("2x");
 
     return 0;
 }
