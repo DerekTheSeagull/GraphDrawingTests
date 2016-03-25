@@ -1,0 +1,15 @@
+//
+// Created by Josh aka Bae on 21/03/2016.
+//
+
+#ifndef GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
+#define GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
+
+#include
+
+class GraphGraphicsScene {
+
+};
+
+
+#endif //GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
