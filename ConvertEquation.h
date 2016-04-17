@@ -6,7 +6,7 @@
 #define GRAPHDRAWINGTESTS_CONVERTEQUATION_H
 
 #include <iostream>
-#include <intrin.h>
+#include <string.h>
 
 using namespace std;
 
