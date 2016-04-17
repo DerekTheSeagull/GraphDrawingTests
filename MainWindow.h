@@ -8,9 +8,24 @@
 #include <QtCore>
 #include <QtGui>
 #include <QtWidgets/qmainwindow.h>
+#include <QtWidgets/qboxlayout.h>
+#include <QtWidgets/qmenubar.h>
+#include <QtWidgets/qtoolbar.h>
+
+using namespace std;
 
 class MainWindow : QMainWindow {
 
+public:
+    MainWindow();
+
+
+
+private:
+    QVBoxLayout qvbLayout;
+    QWidget qwCentralWidget;
+    QToolBar qtToolbar;
+    QMenuBar qmMenuBar;
 };
 
 

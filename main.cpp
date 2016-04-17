@@ -1,14 +1,16 @@
 #include <iostream>
+#include <QtWidgets/qapplication.h>
 #include "ConvertEquation.h"
-#include <ginac>
+#include "MainWindow.h"
+#include "exprtk.hpp"
 
 using namespace std;
 
 int main() {
-    // i have a completely irrational hatred for symbolic c++ i would literally rather eat an entire rabbit
-    // than have to use this anymore love from josh
-
-
+    QApplication app(__argc, __argv);
+    app.exec();
+    MainWindow mwMainWindow;
+    mwMainWindow.raise();
 
     return 0;
 }

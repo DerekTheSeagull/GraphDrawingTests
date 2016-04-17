@@ -3,3 +3,10 @@
 //
 
 #include "MainWindow.h"
+
+MainWindow::MainWindow() {
+    setMenuBar(&qmMenuBar);
+    qvbLayout.addWidget(&qtToolbar);
+    qwCentralWidget.setLayout(&qvbLayout);
+    setCentralWidget(&qwCentralWidget);
+}

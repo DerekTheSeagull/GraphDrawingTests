@@ -5,8 +5,6 @@
 #ifndef GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
 #define GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
 
-#include
-
 class GraphGraphicsScene {
 
 };
