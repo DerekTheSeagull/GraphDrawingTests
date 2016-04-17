@@ -6,71 +6,50 @@
 #define GRAPHDRAWINGTESTS_CONVERTEQUATION_H
 
 #include <iostream>
-#include <string.h>
+#include <map>
 
 using namespace std;
+bool inString(string s, char d);
 
-const int iArrayHeight = 6;
+map<char, pair<string, string>> mConditionalConversions;
 
-pair <bool, int> InArray(pair <const char*, pair<string, string>> aArray[iArrayHeight][1], const char* cTarget);
-
-bool InString(string sString, const char* cTarget);
+void initialiseMap() {
+    mConditionalConversions['x'] = make_pair("0123456789)", "*x");
+    mConditionalConversions['y'] = make_pair("0123456789)", "*y");
+    mConditionalConversions['('] = make_pair("0123456789)", "*(");
+    mConditionalConversions['s'] = make_pair("0123456789)", "*s");
+    mConditionalConversions['c'] = make_pair("0123456789)", "*c");
+    mConditionalConversions['t'] = make_pair("0123456789)", "*t");
+}
 
 string ConvertEquation(string sEquation) {
     string sFinalEquation;
-    const char* csEquation = sEquation.c_str();
 
-    pair <const char*, pair<string, string>> aConditionalConversions[iArrayHeight][1];
-    aConditionalConversions[0][0] = make_pair("x", make_pair("0123456789(", "*x"));
-    aConditionalConversions[1][0] = make_pair("y", make_pair("0123456789(", "*y"));
-    aConditionalConversions[2][0] = make_pair("s", make_pair("0123456789(", "*s"));
-    aConditionalConversions[3][0] = make_pair("c", make_pair("0123456789(", "*c"));
-    aConditionalConversions[4][0] = make_pair("t", make_pair("0123456789(", "*t"));
-    aConditionalConversions[5][0] = make_pair("(", make_pair("0123456789(", "*("));
+    vector<char> prevChars;
 
-
-    for (int i = 0; i < sEquation.length(); ++i) {
-        const char* ccCurrentChar = &csEquation[i];
-
-        pair <bool, int> inArray;
-        bool inString;
-
-        inArray = InArray(aConditionalConversions, ccCurrentChar);
-
-        inString = aConditionalConversions[inArray.second][0].second.first.find(sEquation[i-1]);
-
-        if (i > 0 && inArray.first && inString) {
-            sFinalEquation += aConditionalConversions[inArray.second][0].second.second;
+    for (char c : sEquation) {
+        if ( c != sEquation[0] && mConditionalConversions.find(c) != mConditionalConversions.end() &&
+                inString(mConditionalConversions[c].first, prevChars.back())) {
+                sFinalEquation += mConditionalConversions[c].second;
+        } else {
+            sFinalEquation += c;
         }
-        else {
-            sFinalEquation += sEquation[i];
-        }
+
+        prevChars.push_back(c);
     }
-
 
     return sFinalEquation;
 }
 
-pair <bool, int> InArray(pair <const char*, pair<string, string>> aArray[iArrayHeight][1], const char* cTarget) {
-    for (int i = 0; i < iArrayHeight; ++i) {
-        if(strcmp(cTarget, aArray[i][0].first) == 0) {
-            return make_pair(true, i);
-        }
-    }
-
-    return make_pair(false, 0);
-}
-
-bool InString(string sString, const char* cTarget) {
-    for (int i = 0; i < sString.length(); ++i) {
-        char cCurrentChar = sString[i];
-
-        if (strcmp(cTarget, &cCurrentChar) == 0) {
+bool inString(string s, char d) {
+    for (char c : s) {
+        if (c == d) {
             return true;
         }
     }
 
     return false;
 }
+
 
 #endif //GRAPHDRAWINGTESTS_CONVERTEQUATION_H

@@ -13,4 +13,4 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5Sql REQUIRED)
 
 qt5_use_modules( GraphDrawingTests Core Widgets Gui Sql )
-target_link_libraries( GraphDrawingTests Ginac )
+target_link_libraries( GraphDrawingTests )
