@@ -5,16 +5,19 @@
 #ifndef GRAPHDRAWINGTESTS_MAINWINDOW_H
 #define GRAPHDRAWINGTESTS_MAINWINDOW_H
 
+#include "GraphGraphicsScene.h"
+
 #include <QtCore>
 #include <QtGui>
 #include <QtWidgets/qmainwindow.h>
 #include <QtWidgets/qboxlayout.h>
 #include <QtWidgets/qmenubar.h>
 #include <QtWidgets/qtoolbar.h>
+#include <QtWidgets/QPushButton>
 
 using namespace std;
 
-class MainWindow : QMainWindow {
+class MainWindow : public QMainWindow {
 
 public:
     MainWindow();
@@ -26,6 +29,8 @@ private:
     QWidget qwCentralWidget;
     QToolBar qtToolbar;
     QMenuBar qmMenuBar;
+
+    GraphGraphicsScene *ggsGraph = new GraphGraphicsScene(0, 0);
 };
 
 

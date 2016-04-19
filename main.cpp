@@ -5,9 +5,12 @@
 
 using namespace std;
 
-int main() {
-    initialiseMap();
+int main(int argc, char **argv) {
+    QApplication app (argc, argv);
 
-    cout << ConvertEquation("3x+2x(3x+3)y");
+    MainWindow mw;
+    mw.show();
+    app.exec();
+
     return 0;
 }

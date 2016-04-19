@@ -4,9 +4,13 @@
 
 #include "MainWindow.h"
 
+using namespace std;
+
 MainWindow::MainWindow() {
     setMenuBar(&qmMenuBar);
     qvbLayout.addWidget(&qtToolbar);
+    qvbLayout.addWidget(&ggsGraph->view);
     qwCentralWidget.setLayout(&qvbLayout);
     setCentralWidget(&qwCentralWidget);
 }
+
