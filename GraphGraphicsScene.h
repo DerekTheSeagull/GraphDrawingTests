@@ -1,55 +1,49 @@
 //
-// Created by Josh aka Bae on 21/03/2016.
+// Created by Josh aka Bae on 27/04/2016.
 //
-
-//TODO Add functions to draw graphs, add a grid and axes labels
-//TODO Have the axes move when the graph is moved?
-//TODO Use a timer_ for all updates to graph (If still laggy maybe 100 lines added per tick?)
 
 #ifndef GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
 #define GRAPHDRAWINGTESTS_GRAPHGRAPHICSSCENE_H
 
-#include <QtWidgets/QGraphicsScene>
-#include <QtWidgets/QGraphicsView>
-#include <QtCore/QTimer>
-#include <QtWidgets/QGraphicsLineItem>
+#include <iostream>
+#include <QtWidgets/qgraphicsview.h>
+#include <QtWidgets/qgraphicsitem.h>
+#include <QtCore/qtimer.h>
 
-using namespace std;
 
 class GraphGraphicsScene : public QGraphicsScene {
     Q_OBJECT
 
 public:
-    GraphGraphicsScene(int width, int height);
-    bool DrawGraph(string sEquation);
+    GraphGraphicsScene(int w, int h);
 
     QGraphicsView view;
 
 public slots:
-    void tick();
+    long tick();
 
 private:
-    bool DrawAxes();
-    bool AddGrid();
-    bool AddLabels();
+    void drawAxis();
 
-    int height_;
+    int iScale = 5;
+
+    int iMinY_;
+    int iMinX_;
+    int iMaxY_;
+    int iMaxX_;
+
     int width_;
+    int height_;
 
-    int viewX_ = -500;
-    int viewY_ = -500;
-    int scrollOffsetX_;
-    int scrollOffsetY_;
+    int xOffset = 0;
+    int yOffset = 0;
 
-    float currentMinX_;
-    float currentMaxX_;
-    float currentMinY_;
-    float currentMaxY_;
+    QPen pen;
 
-    QPen axisPen_;
-    QGraphicsLineItem xAxis_;
     QGraphicsLineItem yAxis_;
-    QTimer timer_;
+    QGraphicsLineItem xAxis_;
+
+    QTimer *timer = new QTimer();
 };
 
 

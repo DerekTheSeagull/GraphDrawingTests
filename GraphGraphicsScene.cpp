@@ -1,72 +1,67 @@
 //
-// Created by Josh aka Bae on 21/03/2016.
+// Created by Josh aka Bae on 27/04/2016.
 //
 
 #include "GraphGraphicsScene.h"
-#include <iostream>
-#include <QtWidgets/QGraphicsItem>
 
 using namespace std;
 
-GraphGraphicsScene::GraphGraphicsScene(int width, int height) {
-    height_ = height;
-    width_ = width;
+GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
+    width_ = w; height_ = h;
 
     view.setScene(this);
-    view.setSceneRect(- width_ / 2 , - height_ / 2, width_, height_);
+    view.setSceneRect(-width_ / 2, -height_ / 2, height_, width_);
 
-    view.setDragMode(QGraphicsView::ScrollHandDrag);
+    iMinX_ = -width_/2; iMinY_ = -height_/2;
+    iMaxX_ = iMinX_ + width_; iMaxY_ = iMinY_ + height_;
 
-    axisPen_.setColor(Qt::red);
-    yAxis_.setPen(axisPen_);
-    xAxis_.setPen(axisPen_);
+    pen.setColor(Qt::red); yAxis_.setPen(pen); xAxis_.setPen(pen);
 
-    AddGrid();
+    connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
 
-    connect(&timer_, SIGNAL(timeout()), this, SLOT(tick()));
-    timer_.start(10);
+    timer->start(10);
 }
 
-bool GraphGraphicsScene::DrawGraph(string sEquation) {
-
-}
-
-bool GraphGraphicsScene::DrawAxes() {
-    //scrolls the y-axis as the scene moves
-    if ( currentMinX_ <= 0 <= currentMaxX_ ) {
-        yAxis_.setLine(0, currentMinY_, 0, currentMaxY_);
+void GraphGraphicsScene::drawAxis() {
+    if (iMinX_ > 0) {
+        yAxis_.setLine(iMinX_, iMinY_, iMinX_, iMaxY_);
+        removeItem(&yAxis_);
+        addItem(&yAxis_);
+    } else if (iMaxX_ < 0) {
+        yAxis_.setLine(iMaxX_, iMinY_, iMaxX_, iMaxY_);
+        removeItem(&yAxis_);
+        addItem(&yAxis_);
+    } else if (iMinX_ < 0 < iMaxX_) {
+        yAxis_.setLine(0, iMinY_, 0, iMaxY_);
         removeItem(&yAxis_);
         addItem(&yAxis_);
     }
 
-    //scrolls the x-axis as the scene moves
-}
-
-bool GraphGraphicsScene::AddGrid() {
-    //draws lines along the y-axis
-    for (int i = -100000 / 20; i < 100000 / 20; ++i) {
-            addLine(currentMinX_, i * 20, currentMaxX_, i * 20);
+    if (iMinY_ > 0) {
+        xAxis_.setLine(iMinX_, iMinY_, iMaxX_, iMinY_);
+        removeItem(&xAxis_);
+        addItem(&xAxis_);
+    } else if (iMaxY_ < 0) {
+        xAxis_.setLine(iMinX_, iMinY_, iMaxX_, iMinY_);
+        removeItem(&xAxis_);
+        addItem(&xAxis_);
+    } else if (iMinY_ < 0 < iMaxY_) {
+        xAxis_.setLine(iMinX_, 0, iMaxX_, 0);
+        removeItem(&xAxis_);
+        addItem(&xAxis_);
     }
-
 }
 
-bool GraphGraphicsScene::AddLabels() {
+long GraphGraphicsScene::tick() {
+    iMinX_ += xOffset;
+    iMinY_ += yOffset;
 
-}
+    iMaxX_ = iMinX_ + height_;
+    iMaxY_ = iMinY_ + width_;
 
-void GraphGraphicsScene::tick() {
-    scrollOffsetX_ += 10;
-    scrollOffsetY_ += 10;
+    view.setSceneRect(iMinX_, iMinY_, height_, width_);
 
-    //view.setSceneRect(viewX_ + scrollOffsetX_, viewY_ + scrollOffsetY_, 500, 500);
+    drawAxis();
 
-    //records the scene coordinates under the top-left and bottom-right corners of the view
-    currentMinX_ = view.mapToScene(0, 0).x();
-    currentMinY_ = view.mapToScene(0, 0).x();
 
-    currentMaxX_ = view.mapToScene(view.height(), 0).x();
-    currentMaxY_ = view.mapToScene(0, view.width()).y();
-
-    //updates the position of the axes on the screen
-    DrawAxes();
 }
