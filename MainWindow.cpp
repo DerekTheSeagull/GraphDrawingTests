@@ -13,4 +13,3 @@ MainWindow::MainWindow() {
     qwCentralWidget.setLayout(&qvbLayout);
     setCentralWidget(&qwCentralWidget);
 }
-

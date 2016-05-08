@@ -24,6 +24,7 @@ public:
     MainWindow();
 
 private:
+
     QVBoxLayout qvbLayout;
     QWidget qwCentralWidget;
     QToolBar qtToolbar;

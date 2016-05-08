@@ -10,6 +10,8 @@
 #include <QtWidgets/qgraphicsitem.h>
 #include <QtCore/qtimer.h>
 
+using namespace std;
+
 
 class GraphGraphicsScene : public QGraphicsScene {
     Q_OBJECT
@@ -23,9 +25,13 @@ public slots:
     long tick();
 
 private:
-    void drawAxis();
+    void DrawAxis();
+    void DrawGrid(int scale); //this is only called when it's needed i.e. not every tick only when the scale or the scene position has moved.
+    void MoveScene(int newX, int newY); //moves the top left hand corner of the scene to the specified position.
 
     int iScale = 5;
+
+    vector<QGraphicsLineItem *> GridLines;
 
     int iMinY_;
     int iMinX_;
@@ -35,13 +41,16 @@ private:
     int width_;
     int height_;
 
-    int xOffset = 0;
-    int yOffset = 0;
+    int xOffset_ = 0;
+    int yOffset_ = 0;
 
-    QPen pen;
+    QPen AxisPen;
+    QPen GridPen;
 
     QGraphicsLineItem yAxis_;
     QGraphicsLineItem xAxis_;
+
+    QGraphicsLineItem GridLine_;
 
     QTimer *timer = new QTimer();
 };
