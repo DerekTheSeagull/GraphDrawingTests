@@ -15,25 +15,46 @@ GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
     iMinX_ = -width_/2; iMinY_ = -height_/2;
     iMaxX_ = iMinX_ + width_; iMaxY_ = iMinY_ + height_;
 
-    AxisPen.setColor(Qt::red); yAxis_.setPen(AxisPen); xAxis_.setPen(AxisPen);
-    GridPen.setColor(Qt::lightGray);
+    AxisPen_.setColor(Qt::red); yAxis_.setPen(AxisPen_); xAxis_.setPen(AxisPen_);
+    GridPen_.setColor(Qt::lightGray);
 
-    connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(tick()));
 
-    for (int i = 0; i < 20; ++i) {
-        GridLines.insert(GridLines.end(), new QGraphicsLineItem);
-        GridLines[i]->setPen(GridPen);
+    for (int i = 0; i <= iLinesToStore_; ++i) {
+        GridLines_.insert(GridLines_.end(), new QGraphicsLineItem);
+        GridLines_[i]->setPen(GridPen_);
     }
 
-    timer->start(1000 * 1/30);
+    DrawGrid(iScale_);
+
+    timer_->start(1000 * 1 / 30);
 }
 
 void GraphGraphicsScene::DrawGrid(int scale) {
-    for (int i = iMinX_ - (iMinX_ % scale); i < iMaxX_; i += scale) {
-        GridLines[i/scale]->setLine(i, iMinY_, i, iMaxY_);
-        removeItem(GridLines[i/scale]);
-        addItem(GridLines[i/scale]);
+    int i = 0;
+
+    for (int x = iMinX_ - (iMinX_ % scale); x <= iMaxX_; x += scale) {
+        GridLines_[i]->setLine(x, iMinY_, x, iMaxY_);
+        if (GridLines_[i]->scene() == this) {
+            removeItem(GridLines_[i]);
+        }
+        addItem(GridLines_[i]);
+
+        ++i;
     }
+
+    i = iLinesToStore_ - 1;
+
+    for (int y = iMinY_ - (iMinY_ % scale); y <= iMaxY_; y += scale) {
+        GridLines_[i]->setLine(iMinX_, y, iMaxX_, y);
+        if (GridLines_[i]->scene() == this) {
+            removeItem(GridLines_[i]);
+        }
+        addItem(GridLines_[i]);
+
+        --i;
+    }
+
 }
 
 void GraphGraphicsScene::DrawAxis() {
@@ -67,18 +88,27 @@ void GraphGraphicsScene::DrawAxis() {
 }
 
 void GraphGraphicsScene::MoveScene(int newX, int newY) {
-    view.setSceneRect(iMinX_, iMinY_, height_, width_);
+    view.setSceneRect(newX, newY, height_, width_);
 
-    DrawGrid(iScale);
+    DrawGrid(iScale_);
 }
 
 long GraphGraphicsScene::tick() {
+    iCurrentTick ++;
+
+    xOffset_ = 1; yOffset_ = 1;
+
     iMinX_ += xOffset_;
     iMinY_ += yOffset_;
 
     iMaxX_ = iMinX_ + height_;
     iMaxY_ = iMinY_ + width_;
 
-    DrawGrid(iScale);
+    MoveScene(iMinX_, iMinY_);
+
+    if (iCurrentTick % 30 == 0) {
+        DrawGrid(20);
+    }
+
     DrawAxis();
 }
