@@ -63,7 +63,7 @@ void GraphGraphicsScene::DrawAxis() {
         removeItem(&yAxis_);
         addItem(&yAxis_);
     } else if (iMaxX_ < 0) {
-        yAxis_.setLine(iMaxX_, iMinY_, iMaxX_, iMaxY_);
+        yAxis_.setLine(iMaxX_ - 1, iMinY_, iMaxX_ - 1, iMaxY_);
         removeItem(&yAxis_);
         addItem(&yAxis_);
     } else if (iMinX_ < 0 < iMaxX_) {
@@ -77,7 +77,7 @@ void GraphGraphicsScene::DrawAxis() {
         removeItem(&xAxis_);
         addItem(&xAxis_);
     } else if (iMaxY_ < 0) {
-        xAxis_.setLine(iMinX_, iMinY_, iMaxX_, iMinY_);
+        xAxis_.setLine(iMinX_, iMaxY_ - 1, iMaxX_, iMaxY_ - 1);
         removeItem(&xAxis_);
         addItem(&xAxis_);
     } else if (iMinY_ < 0 < iMaxY_) {
@@ -96,7 +96,7 @@ void GraphGraphicsScene::MoveScene(int newX, int newY) {
 long GraphGraphicsScene::tick() {
     iCurrentTick ++;
 
-    xOffset_ = 1; yOffset_ = 1;
+    xOffset_ = -1; yOffset_ = -1;
 
     iMinX_ += xOffset_;
     iMinY_ += yOffset_;
