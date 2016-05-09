@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Debug/GraphDrawingTests_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Debug/GraphDrawingTests_automoc.cpp" isTestSource="false" />
+    <content url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Debug/GraphDrawingTests_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Debug/GraphDrawingTests_automoc.cpp" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/MinSizeRel/GraphDrawingTests_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/MinSizeRel/GraphDrawingTests_automoc.cpp" isTestSource="false" />
+    <content url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/MinSizeRel/GraphDrawingTests_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/MinSizeRel/GraphDrawingTests_automoc.cpp" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/RelWithDebInfo/GraphDrawingTests_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/RelWithDebInfo/GraphDrawingTests_automoc.cpp" isTestSource="false" />
+    <content url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/RelWithDebInfo/GraphDrawingTests_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/RelWithDebInfo/GraphDrawingTests_automoc.cpp" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Release/GraphDrawingTests_automoc.cpp">
-      <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Release/GraphDrawingTests_automoc.cpp" isTestSource="false" />
+    <content url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Release/GraphDrawingTests_automoc.cpp">
+      <sourceFolder url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Release/GraphDrawingTests_automoc.cpp" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/GraphGraphicsScene.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ConvertEquation.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ReadEquation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MainWindow.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ReadEquation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GraphGraphicsScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MainWindow.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MainWindow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GraphGraphicsScene.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/MinSizeRel" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Debug" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Release" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/RelWithDebInfo" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/include" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/mkspecs/win32-g++" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/i686-w64-mingw32/include" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/MinSizeRel" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Debug" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Release" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/RelWithDebInfo" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/include" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/mkspecs/win32-g++" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/i686-w64-mingw32/include" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/MinSizeRel" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Debug" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Release" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/RelWithDebInfo" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/include" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/mkspecs/win32-g++" />
-          <root url="file://C:/Qt/Qt5.5.1/Tools/mingw492_32/i686-w64-mingw32/include" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/MinSizeRel" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Debug" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Release" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/RelWithDebInfo" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/include" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/lib/gcc/i686-w64-mingw32/4.9.2/include-fixed" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/mkspecs/win32-g++" />
+          <root url="file://D:/Qt/Qt5.6.0/Tools/mingw492_32/i686-w64-mingw32/include" />
         </SOURCES>
         <excluded>
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/MinSizeRel/GraphDrawingTests_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Debug/GraphDrawingTests_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Release/GraphDrawingTests_automoc.cpp" />
-          <root url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/RelWithDebInfo/GraphDrawingTests_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/MinSizeRel/GraphDrawingTests_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Debug/GraphDrawingTests_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/Release/GraphDrawingTests_automoc.cpp" />
+          <root url="file://$USER_HOME$/.CLion2016.1/system/cmake/generated/GraphDrawingTests-9ad6dadc/9ad6dadc/RelWithDebInfo/GraphDrawingTests_automoc.cpp" />
         </excluded>
       </library>
     </orderEntry>
