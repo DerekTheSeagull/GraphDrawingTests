@@ -7,20 +7,28 @@
 
 #include <iostream>
 #include "ConvertEquation.h"
-#include "muParser.h"
+#include <muParser.h>
 
 using namespace std;
 using namespace mu;
 
 Parser parser;
 
-vector<float> ReadEquation(string equation) {
-    double x = 0;
+map<double, double> ReadEquation(string equation) {
+    map<double, double> mValues;
+
+    double x = -500;
 
     parser.DefineVar("x", &x);
     parser.SetExpr(equation);
 
+    for (float i = 0; i < 1000; i += 0.01) {
+        mValues[x] = parser.Eval();
 
+        x += 0.01;
+    }
+
+    return mValues;
 }
 
 #endif //GRAPHDRAWINGTESTS_READEQUATION_H

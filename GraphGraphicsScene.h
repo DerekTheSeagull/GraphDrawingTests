@@ -28,6 +28,7 @@ private:
     int iCurrentTick = 0;
 
     void DrawAxis();
+    void DrawGraph(string equation);
     void DrawGrid(int scale); //this is only called when it's needed i.e. not every tick only when the scale or the scene position has moved.
     void MoveScene(int newX, int newY); //moves the top left hand corner of the scene to the specified position.
 

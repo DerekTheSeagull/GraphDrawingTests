@@ -3,6 +3,7 @@
 //
 
 #include "GraphGraphicsScene.h"
+#include "ReadEquation.h"
 
 using namespace std;
 
@@ -29,6 +30,8 @@ GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
     }
 
     DrawGrid(iScale_);
+
+    DrawGraph("3x");
 
     timer_->start(1000 * 1 / 30);
 }
@@ -66,6 +69,14 @@ void GraphGraphicsScene::DrawGrid(int scale) {
         --i;
     }
 
+}
+
+void GraphGraphicsScene::DrawGraph(string equation) {
+    map<double, double> mValues = ReadEquation(equation);
+
+    for (double x = iMinX_ / iScale_; x < iMaxX_ / iScale_; x += 0.01) {
+        addLine((x - 0.01) * iScale_ , mValues[x - 0.01] * iScale_, x * iScale_, mValues[x] * iScale_);
+    }
 }
 
 void GraphGraphicsScene::DrawAxis() {
