@@ -30,7 +30,7 @@ private:
     QToolBar qtToolbar;
     QMenuBar qmMenuBar;
     QDesktopWidget dw;
-    GraphGraphicsScene *ggsGraph = new GraphGraphicsScene(256, 256);
+    GraphGraphicsScene *ggsGraph = new GraphGraphicsScene(500, 500);
 };
 
 

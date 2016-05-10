@@ -9,6 +9,9 @@ using namespace std;
 GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
     width_ = w; height_ = h;
 
+    view.setFixedHeight(height_ + 3);
+    view.setFixedWidth(width_ + 3);
+
     view.setScene(this);
     view.setSceneRect(-width_ / 2, -height_ / 2, height_, width_);
 
@@ -71,7 +74,7 @@ void GraphGraphicsScene::DrawAxis() {
         removeItem(&yAxis_);
         addItem(&yAxis_);
     } else if (iMaxX_ < 0) { //draws x axis if view showing scene to the left of origin
-        yAxis_.setLine(iMaxX_ - 1, iMinY_, iMaxX_ - 1, iMaxY_);
+        yAxis_.setLine(iMaxX_, iMinY_, iMaxX_, iMaxY_);
         removeItem(&yAxis_);
         addItem(&yAxis_);
     } else if (iMinX_ < 0 < iMaxX_) { //draws x axis if x = 0 is currently on screen
@@ -85,7 +88,7 @@ void GraphGraphicsScene::DrawAxis() {
         removeItem(&xAxis_);
         addItem(&xAxis_);
     } else if (iMaxY_ < 0) { //draws y axis if view showing scene above origin
-        xAxis_.setLine(iMinX_, iMaxY_ - 1, iMaxX_, iMaxY_ - 1);
+        xAxis_.setLine(iMinX_, iMaxY_, iMaxX_, iMaxY_);
         removeItem(&xAxis_);
         addItem(&xAxis_);
     } else if (iMinY_ < 0 < iMaxY_) { //draws y axis if y = 0 is currently on screen

@@ -6,22 +6,19 @@
 #define GRAPHDRAWINGTESTS_READEQUATION_H
 
 #include <iostream>
-#include "symbolicc++.h"
 #include "ConvertEquation.h"
-#include <vector>
-#include <algorithm>
+#include "muParser.h"
 
 using namespace std;
+using namespace mu;
 
-const int pStrToSymbolHeight = 2;
+Parser parser;
 
-list ReadEquation(string equation){
-    pair<string, Symbolic> pStrToSymbol[pStrToSymbolHeight][0];
-    pStrToSymbol[0][0] = make_pair("x", Symbolic("x"));
-    pStrToSymbol[0][0] = make_pair("y", Symbolic("y"));
+vector<float> ReadEquation(string equation) {
+    double x = 0;
 
-    "*";
-
+    parser.DefineVar("x", &x);
+    parser.SetExpr(equation);
 
 
 }
