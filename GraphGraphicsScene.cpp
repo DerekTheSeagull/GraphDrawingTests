@@ -72,11 +72,11 @@ void GraphGraphicsScene::DrawGrid(int scale) {
 }
 
 void GraphGraphicsScene::DrawGraph(string equation) {
-    map<double, double> mValues = ReadEquation(equation);
+    //map<double, double> mValues = ReadEquation(equation);
 
-    for (double x = iMinX_ / iScale_; x < iMaxX_ / iScale_; x += 0.01) {
-        addLine((x - 0.01) * iScale_ , mValues[x - 0.01] * iScale_, x * iScale_, mValues[x] * iScale_);
-    }
+    //for (double x = iMinX_ / iScale_; x < iMaxX_ / iScale_; x += 0.01) {
+    //    addLine((x - 0.01) * iScale_ , mValues[x - 0.01] * iScale_, x * iScale_, mValues[x] * iScale_);
+    //}
 }
 
 void GraphGraphicsScene::DrawAxis() {

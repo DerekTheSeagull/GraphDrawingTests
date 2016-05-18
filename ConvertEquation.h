@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <map>
+#include <c++/vector>
 
 using namespace std;
 bool inString(string s, char d);
