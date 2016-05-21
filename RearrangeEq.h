@@ -13,6 +13,7 @@
 using namespace std;
 
 bool isoperator (char c);
+bool is_alnum(string s);
 vector<string> CreateVector(string s);
 vector<string> LumpStrings(vector<string> v);
 
@@ -41,17 +42,17 @@ string RearrageEquation (string equation, string target) {
         afterEqls.insert(afterEqls.begin(), "+");
     }
 
-    beforeEqls = LumpStrings(beforeEqls);
-    afterEqls = LumpStrings(afterEqls);
-
+    beforeEqls = LumpStrings(beforeEqls); //Groups all of the strings in the vectors into groups that can be
+    afterEqls = LumpStrings(afterEqls);   //moved around by themselves, e.g. +, x, *, 3 could all be dealt with
+                                          //together
     for (string s : beforeEqls) {
-        cout << s << ",";
+        cout << s << "," << " ";
     }
 
     cout << endl;
 
     for (string s : afterEqls) {
-        cout << s;
+        cout << s << "," << " ";
     }
 
 }
@@ -86,11 +87,14 @@ vector<string> LumpStrings (vector<string> v) {
     vector<string> tempStrings;
     tempStrings.push_back(".");
 
-    set<string> opset1 = {"+", "-"};
-    set<string> opset2 = {"*", "/"};
+    set<string> opset1 = {"+", "-"}; //set of operators that can be easily dealt with i.e. just sent to the other side
+    set<string> opset2 = {"*", "/"}; //set of operators that are slightly more complex
 
     for (int i = 0; i < v.size(); ++i) {
-        if (opset2.find(v[i]) != opset2.end()) {
+        bool inOpset1 = opset1.find(v[i]) != opset1.end(); //checks if the current item is in either of the opsets
+        bool inOpset2 = opset2.find(v[i]) != opset2.end(); //
+
+        if (inOpset2) {
             if (tempStrings.back().back() != '.') {
                 tempStrings.back() += v[i];
             } else {
@@ -98,25 +102,39 @@ vector<string> LumpStrings (vector<string> v) {
             }
         }
 
-        if (i > 0 && !isoperator(v[i]) && opset2.find(v[i-1]) != opset2.end()) {
+        if (i > 0 && !isoperator(v[i]) && inOpset2) {
             tempStrings.back() += v[i];
         }
 
-        if (opset1.find(v[i]) != opset1.end()) {
+        if (inOpset1) {
             string stringToAdd = v[i];
             int x = i + 1;
-            while (x < v.size() && opset1.find(v[x]) == opset1.end() && opset2.find(v[x]) == opset2.end()) {
+            while (x < v.size() &&  opset1.find(v[x]) == opset1.end()) {
                 stringToAdd += v[x];
                 x ++;
             }
 
-            tempStrings.push_back(stringToAdd);
+            i = x - i + 1;
+
+            cout << "String to add = " << stringToAdd << endl;
+
+            tempStrings.push_back(stringToAdd + ".");
         }
     }
 
 
 
     return tempStrings;
+}
+
+bool is_alnum(string s) {
+    for(char c : s) {
+        if (!isalnum(c)) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 
