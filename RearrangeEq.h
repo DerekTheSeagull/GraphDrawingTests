@@ -9,13 +9,17 @@
 #include <c++/bits/algorithmfwd.h>
 #include <c++/vector>
 #include <c++/set>
+#include <c++/bits/stl_map.h>
 
 using namespace std;
 
 bool isoperator (char c);
 bool is_alnum(string s);
+bool ContainsTarget(string s, string target);
 vector<string> CreateVector(string s);
 vector<string> LumpStrings(vector<string> v);
+string FlipOp (string op);
+vector<string> RearrangeSides (vector<string> v1, vector<string> v2, string target);
 
 string RearrageEquation (string equation, string target) {
     vector<string> beforeEqls; vector<string> afterEqls;
@@ -45,6 +49,9 @@ string RearrageEquation (string equation, string target) {
     beforeEqls = LumpStrings(beforeEqls); //Groups all of the strings in the vectors into groups that can be
     afterEqls = LumpStrings(afterEqls);   //moved around by themselves, e.g. +, x, *, 3 could all be dealt with
                                           //together
+
+    beforeEqls, afterEqls = RearrangeSides(beforeEqls, afterEqls, target);
+
     for (string s : beforeEqls) {
         cout << s << "," << " ";
     }
@@ -85,46 +92,32 @@ vector<string> CreateVector (string s) {
 
 vector<string> LumpStrings (vector<string> v) {
     vector<string> tempStrings;
-    tempStrings.push_back(".");
 
     set<string> opset1 = {"+", "-"}; //set of operators that can be easily dealt with i.e. just sent to the other side
     set<string> opset2 = {"*", "/"}; //set of operators that are slightly more complex
 
     for (int i = 0; i < v.size(); ++i) {
-        bool inOpset1 = opset1.find(v[i]) != opset1.end(); //checks if the current item is in either of the opsets
-        bool inOpset2 = opset2.find(v[i]) != opset2.end(); //
-
-        if (inOpset2) {
-            if (tempStrings.back().back() != '.') {
-                tempStrings.back() += v[i];
-            } else {
-                tempStrings.push_back(v[i-1] + v[i]);
-            }
-        }
-
-        if (i > 0 && !isoperator(v[i]) && inOpset2) {
-            tempStrings.back() += v[i];
-        }
-
-        if (inOpset1) {
-            string stringToAdd = v[i];
-            int x = i + 1;
-            while (x < v.size() &&  opset1.find(v[x]) == opset1.end()) {
-                stringToAdd += v[x];
-                x ++;
-            }
-
-            i = x - i + 1;
-
-            cout << "String to add = " << stringToAdd << endl;
-
-            tempStrings.push_back(stringToAdd + ".");
+        if (opset1.find(v[i]) != opset1.end()) {
+            tempStrings.push_back(v[i]);
+        } else if (is_alnum(v[i]) or opset2.find(v[i]) != opset2.end()) {
+            tempStrings.back().append(v[i]);
         }
     }
 
-
-
     return tempStrings;
+}
+
+vector<string> RearrangeSides (vector<string> v1, vector<string> v2, string target) {
+    //rearranges the vectors so that only the expressions holding the target are on the left (v1)
+
+    for (int i = 0; i < v1.size(); ++i) {
+        if (!ContainsTarget(v1[i], target)) {
+            v2.push_back(FlipOp(to_string(v1[i][0])) + v1[i].substr(1));
+            v1[i] = "";
+        }
+    }
+
+    return v1, v2;
 }
 
 bool is_alnum(string s) {
@@ -137,5 +130,26 @@ bool is_alnum(string s) {
     return true;
 }
 
+bool ContainsTarget (string s, string target) {
+    for (char c : s) {
+        if (to_string(c) == target) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+string FlipOp (string op) {
+    map<string, string> Operators;
+
+    Operators.insert(make_pair("*", "/"));
+    Operators.insert(make_pair("/", "*"));
+    Operators.insert(make_pair("-", "+"));
+    Operators.insert(make_pair("+", "-"));
+
+
+    return Operators.at(op);
+}
 
 #endif //GRAPHDRAWINGTESTS_REARRANGEEQ_H
