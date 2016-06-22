@@ -22,7 +22,6 @@ public:
 
     int iScale_ = 20;
 
-    void GraphGraphicsScene::wheelEvent(QWheelEvent *event);
 
     QGraphicsView view;
 

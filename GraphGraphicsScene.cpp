@@ -174,7 +174,3 @@ long GraphGraphicsScene::tick() {
 
     //MoveScene(iMinX_, iMinY_);
 }
-
-void GraphGraphicsScene::wheelEvent(QWheelEvent *event) {
-    event->orientation();
-}
