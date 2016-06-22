@@ -10,8 +10,6 @@ using namespace std;
 GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
     width_ = w; height_ = h;
 
-    view.graph = this;
-
     view.setFixedHeight(height_ + 3);
     view.setFixedWidth(width_ + 3);
 
@@ -175,4 +173,8 @@ long GraphGraphicsScene::tick() {
     //iMaxY_ = iMinY_ + width_;
 
     //MoveScene(iMinX_, iMinY_);
+}
+
+void GraphGraphicsScene::wheelEvent(QWheelEvent *event) {
+    event->orientation();
 }

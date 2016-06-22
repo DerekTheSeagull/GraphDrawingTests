@@ -9,7 +9,6 @@
 #include <QtWidgets/qgraphicsview.h>
 #include <QtWidgets/qgraphicsitem.h>
 #include <QtCore/qtimer.h>
-#include "GraphView.h"
 
 using namespace std;
 
@@ -23,7 +22,9 @@ public:
 
     int iScale_ = 20;
 
-    GraphView view;
+    void GraphGraphicsScene::wheelEvent(QWheelEvent *event);
+
+    QGraphicsView view;
 
 public slots:
     long tick();
