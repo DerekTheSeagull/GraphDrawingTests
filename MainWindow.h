@@ -20,16 +20,20 @@ using namespace std;
 
 class MainWindow : public QMainWindow {
 
+Q_OBJECT
+
 public:
     MainWindow();
     GraphGraphicsScene* getGraph();
 
 private:
+    void CreateMainLayout();
+
     QVBoxLayout qvbLayout;
+    QHBoxLayout qhbZoomButtons;
     QWidget qwCentralWidget;
     QToolBar qtToolbar;
     QMenuBar qmMenuBar;
-    QDesktopWidget dw;
     GraphGraphicsScene *ggsGraph = new GraphGraphicsScene(500, 500);
 };
 

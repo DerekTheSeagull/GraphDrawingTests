@@ -2,8 +2,6 @@
 // Created by Josh aka Bae on 21/03/2016.
 //
 
-#include <symbolicc++.h>
-
 #ifndef GRAPHDRAWINGTESTS_READEQUATION_H
 #define GRAPHDRAWINGTESTS_READEQUATION_H
 

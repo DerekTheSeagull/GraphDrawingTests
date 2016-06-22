@@ -9,6 +9,7 @@
 #include <QtWidgets/qgraphicsview.h>
 #include <QtWidgets/qgraphicsitem.h>
 #include <QtCore/qtimer.h>
+#include "GraphView.h"
 
 using namespace std;
 
@@ -20,7 +21,9 @@ public:
     GraphGraphicsScene(int w, int h);
     void DrawGraph();
 
-    QGraphicsView view;
+    int iScale_ = 20;
+
+    GraphView view;
 
 public slots:
     long tick();
@@ -31,12 +34,13 @@ private:
     void DrawAxis();
     void DrawGrid(int scale); //this is only called when it's needed i.e. not every tick only when the scale or the scene position has moved.
     void MoveScene(int newX, int newY); //moves the top left hand corner of the scene to the specified position.
-
-    int iScale_ = 10;
+    void DrawLabels();
 
     vector<QGraphicsLineItem *> GridLines_;
+    vector<QGraphicsTextItem *> Labels_;
 
-    int iLinesToStore_ = 100; //Dictates the amount of lines that will be stored in the GridLines_ vector
+    int iLinesToStore_ = 200; //Dictates the amount of lines that will be stored in the GridLines_ vector
+    int iTextItemsToStore_ = 200;
 
     int iMinY_;
     int iMinX_;

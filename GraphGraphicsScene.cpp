@@ -10,6 +10,8 @@ using namespace std;
 GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
     width_ = w; height_ = h;
 
+    view.graph = this;
+
     view.setFixedHeight(height_ + 3);
     view.setFixedWidth(width_ + 3);
 
@@ -29,7 +31,13 @@ GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
         GridLines_[i]->setPen(GridPen_);
     }
 
+    for (int j = 0; j < iTextItemsToStore_; ++j) {
+        Labels_.push_back(new QGraphicsTextItem(""));
+    }
+
     DrawGrid(iScale_);
+    DrawLabels();
+    DrawAxis();
 
     DrawGraph();
 
@@ -74,9 +82,10 @@ void GraphGraphicsScene::DrawGrid(int scale) {
 
 void GraphGraphicsScene::DrawGraph() {
     for (int i = iMinX_; i < iMaxX_; ++i) {
-        int y = (int) pow((float) i / iScale_, 2);
+        int y1 = (int) (pow((float) i / iScale_, 2) * iScale_);
+        int y2 = (int) (pow((float) (i + 1) / iScale_, 2) * iScale_);
 
-        addLine(i, -y, i, -y);
+        addLine(i, -y1, i, -y2);
     }
 }
 
@@ -110,10 +119,48 @@ void GraphGraphicsScene::DrawAxis() {
     }
 }
 
+void GraphGraphicsScene::DrawLabels() {
+    int x = 0;
+
+    for (int i = iMinX_; i < iMaxX_; ++i) {
+        if (i % iScale_ == 0) {
+            QGraphicsTextItem *currentLabel = Labels_[x];
+
+            currentLabel->setX(i);
+            currentLabel->setY(2);
+
+            currentLabel->setPlainText(QString::fromStdString(to_string(i/iScale_)));
+
+            removeItem(currentLabel); addItem(currentLabel);
+
+            ++x;
+        }
+    }
+
+    x = iTextItemsToStore_ - 1;
+
+    for (int j = iMinY_; j < iMaxY_; ++j) {
+        if (j % iScale_ == 0 and j != 0) {
+            QGraphicsTextItem *currentLabel = Labels_[x];
+
+            currentLabel->setX(2);
+            currentLabel->setY(j);
+
+            currentLabel->setPlainText(QString::fromStdString(to_string(-j / iScale_)));
+
+            removeItem(currentLabel);
+            addItem(currentLabel);
+
+            --x;
+        }
+    }
+}
+
 void GraphGraphicsScene::MoveScene(int newX, int newY) {
     view.setSceneRect(newX, newY, height_, width_);
 
     DrawGrid(iScale_);
+    DrawAxis();
 }
 
 long GraphGraphicsScene::tick() {
@@ -128,12 +175,4 @@ long GraphGraphicsScene::tick() {
     //iMaxY_ = iMinY_ + width_;
 
     //MoveScene(iMinX_, iMinY_);
-
-    if (iCurrentTick % 30 == 0) {
-        DrawGrid(20);
-    }
-
-    DrawAxis();
-
-    DrawGraph();
 }
