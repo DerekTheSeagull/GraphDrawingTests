@@ -16,7 +16,7 @@ GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
     view.setScene(this);
     view.setSceneRect(-width_ / 2, -height_ / 2, height_, width_);
 
-    iMinX_ = -width_/2; iMinY_ = -height_/2;
+    iMinX_ = -width_ / 2; iMinY_ = -height_ / 2;
     iMaxX_ = iMinX_ + width_; iMaxY_ = iMinY_ + height_;
 
     AxisPen_.setColor(Qt::red); yAxis_.setPen(AxisPen_); xAxis_.setPen(AxisPen_);
@@ -31,7 +31,8 @@ GraphGraphicsScene::GraphGraphicsScene(int w, int h) {
 
     DrawGrid(iScale_);
 
-    DrawGraph("3x");
+    DrawGraph();
+
 
     timer_->start(1000 * 1 / 30);
 }
@@ -71,12 +72,12 @@ void GraphGraphicsScene::DrawGrid(int scale) {
 
 }
 
-void GraphGraphicsScene::DrawGraph(string equation) {
-    //map<double, double> mValues = ReadEquation(equation);
+void GraphGraphicsScene::DrawGraph() {
+    for (int i = iMinX_; i < iMaxX_; ++i) {
+        int y = (int) pow((float) i / iScale_, 2);
 
-    //for (double x = iMinX_ / iScale_; x < iMaxX_ / iScale_; x += 0.01) {
-    //    addLine((x - 0.01) * iScale_ , mValues[x - 0.01] * iScale_, x * iScale_, mValues[x] * iScale_);
-    //}
+        addLine(i, -y, i, -y);
+    }
 }
 
 void GraphGraphicsScene::DrawAxis() {
@@ -118,19 +119,21 @@ void GraphGraphicsScene::MoveScene(int newX, int newY) {
 long GraphGraphicsScene::tick() {
     iCurrentTick ++;
 
-    xOffset_ = -1; yOffset_ = -1;
+    //xOffset_ = -1; yOffset_ = -1;
 
-    iMinX_ += xOffset_;
-    iMinY_ += yOffset_;
+    //iMinX_ += xOffset_;
+    //iMinY_ += yOffset_;
 
-    iMaxX_ = iMinX_ + height_;
-    iMaxY_ = iMinY_ + width_;
+    //iMaxX_ = iMinX_ + height_;
+    //iMaxY_ = iMinY_ + width_;
 
-    MoveScene(iMinX_, iMinY_);
+    //MoveScene(iMinX_, iMinY_);
 
     if (iCurrentTick % 30 == 0) {
         DrawGrid(20);
     }
 
     DrawAxis();
+
+    DrawGraph();
 }

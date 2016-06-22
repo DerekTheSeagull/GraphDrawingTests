@@ -13,3 +13,7 @@ MainWindow::MainWindow() {
     qwCentralWidget.setLayout(&qvbLayout);
     setCentralWidget(&qwCentralWidget);
 }
+
+GraphGraphicsScene* MainWindow::getGraph() {
+    return ggsGraph;
+}

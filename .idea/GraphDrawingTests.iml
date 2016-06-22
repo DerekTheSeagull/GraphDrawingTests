@@ -14,11 +14,10 @@
       <sourceFolder url="file://$USER_HOME$/.CLion12/system/cmake/generated/64f95ba2/64f95ba2/Release/GraphDrawingTests_automoc.cpp" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/ConvertEquation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GraphGraphicsScene.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ConvertEquation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ReadEquation.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RearrangeEq.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MainWindow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GraphGraphicsScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MainWindow.cpp" isTestSource="false" />

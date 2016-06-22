@@ -22,6 +22,7 @@ class MainWindow : public QMainWindow {
 
 public:
     MainWindow();
+    GraphGraphicsScene* getGraph();
 
 private:
     QVBoxLayout qvbLayout;
