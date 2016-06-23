@@ -15,6 +15,7 @@
 #include <QtWidgets/qtoolbar.h>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/qdesktopwidget.h>
+#include "images/resources.cpp"
 
 using namespace std;
 

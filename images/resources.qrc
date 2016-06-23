@@ -1,0 +1,7 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file alias="zoom_out.png">magnifier_zoom_out.png</file>
+        <file alias="zoom_in.png">magnifier_zoom_in.png</file>
+        <file alias="window_icon">icon.png</file>
+    </qresource>
+</RCC>

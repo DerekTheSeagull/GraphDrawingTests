@@ -11,6 +11,9 @@ MainWindow::MainWindow() {
 }
 
 void MainWindow::CreateMainLayout() {
+    QResource::registerResource("resources.cpp");
+    setWindowIcon(QIcon(QPixmap(":/window_icon")));
+
     setMenuBar(&qmMenuBar);
 
     qvbLayout.addWidget(&qtToolbar);

@@ -80,10 +80,13 @@ void GraphGraphicsScene::DrawGrid(int scale) {
 
 void GraphGraphicsScene::DrawGraph() {
     for (int i = iMinX_; i < iMaxX_; ++i) {
-        int y1 = (int) (pow((float) i / iScale_, 2) * iScale_);
-        int y2 = (int) (pow((float) (i + 1) / iScale_, 2) * iScale_);
+        float x1 = (float) i / iScale_;
+        float x2 = (float) (i + 1) / iScale_;
 
-        addLine(i, -y1, i, -y2);
+        int y1 = (int) (((x1 + 1) * (x1 - 1)) * iScale_);
+        int y2 = (int) (((x2 + 1) * (x2 - 1)) * iScale_);
+
+        addLine(i, -y1, i + 1, -y2);
     }
 }
 
